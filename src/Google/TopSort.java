@@ -11,7 +11,8 @@ import java.util.Set;
 
 public class TopSort {
 	
-	//http://en.wikipedia.org/wiki/Topological_sorting, I named it dependency sort, or scheduling sort. 
+	//http://en.wikipedia.org/wiki/Topological_sorting, I named it dependency sort, or scheduling sort.
+	//http://www.geeksforgeeks.org/given-sorted-dictionary-find-prece
 	public static void main(String[] args) {
 		List<String> input = new ArrayList<>();
 		input.add("foo");
@@ -75,7 +76,7 @@ public class TopSort {
 	}
 
 	private void updateGraph(String string1, String string2, Map<Character, GNode> map) {
-		int index1=0, index2=0;x
+		int index1=0, index2=0;
 		while(index1<string1.length() && string1.charAt(index1) == string2.charAt(index2)) {
 			index1++; index2++;
 		}
@@ -85,19 +86,6 @@ public class TopSort {
 		if(!target.neighbors.contains(n)) {
 			target.neighbors.add(n);
 			System.out.println("node " + target.value + " added " + n.value);
-		}
-	}
-
-	private void updateGraph(String string, Map<Character, GNode> map) {
-		for(int i=0; i<string.length()-1; i++) {
-			if(string.charAt(i) != string.charAt(i+1)) {
-				GNode target = getOrCreate(map, string.charAt(i));
-				GNode  n = getOrCreate(map, string.charAt(i+1));
-				if(!target.neighbors.contains(n)) {
-					target.neighbors.add(n);
-					System.out.println("node " + target.value + " added " + n.value);
-				}
-			}
 		}
 	}
 
